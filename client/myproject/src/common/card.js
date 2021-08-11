@@ -1,14 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  Switch,
-} from 'react-native';
+import React from 'react';
+import {StyleSheet, Text, View, Switch} from 'react-native';
 const Card = ({title, subtitleText, status, state}) => {
   return (
     <View style={styles.container}>
@@ -55,12 +46,12 @@ const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 3,
+      height: 2,
     },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
 
-    elevation: 7,
+    elevation: 5,
   },
   circle: {
     width: 60,

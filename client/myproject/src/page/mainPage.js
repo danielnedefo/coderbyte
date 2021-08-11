@@ -1,12 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import Card from '../common/card';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
   TouchableOpacity,
 } from 'react-native';
@@ -29,10 +25,12 @@ const MainPage = () => {
       <View style={styles.containerBtn}>
         <TouchableOpacity
           onPress={renderDevices}
-          style={{
-            backgroundColor: showDevice ? '#e9e9e9' : 'white',
-            marginRight: 15,
-          }}>
+          style={[
+            {
+              backgroundColor: showDevice ? '#e9e9e9' : 'white',
+            },
+            styles.containerBtn,
+          ]}>
           <Text>Devices</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -54,6 +52,9 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderWidth: 1,
     borderColor: '#e9e9e9',
+  },
+  deviceBtn: {
+    marginRight: 15,
   },
 });
 export default MainPage;

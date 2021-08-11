@@ -1,34 +1,32 @@
 import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import Card from '../common/card';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, View, FlatList} from 'react-native';
 
 const DevicePage = () => {
   useEffect(() => {
-    const req = fetch('http://localhost:4000/api/devices.json')
-      .then(res => res.json())
-      .then(({data}) => setDevices(data));
+    fetchDevices();
   }, []);
   const [devices, setDevices] = useState();
+  const fetchDevices = async () => {
+    const {data} = await axios.get('http://localhost:4000/api/devices.json');
+    setDevices(data.data);
+  };
   console.log(devices);
   return (
     <SafeAreaView>
       <View style={styles.mainWrapper}>
-        {devices &&
-          devices.map(device => (
+        <FlatList
+          data={devices}
+          style={styles.listContainer}
+          renderItem={({item}) => (
             <Card
-              title={device.attributes.name}
-              subtitleText={device.attributes.model_number}
-              state={device.attributes.state}
+              title={item.attributes.name}
+              subtitleText={item.attributes.model_number}
+              state={item.attributes.state}
             />
-          ))}
+          )}
+        />
       </View>
     </SafeAreaView>
   );
@@ -38,6 +36,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     width: '100%',
     height: '100%',
+  },
+  listContainer: {
+    paddingHorizontal: 5,
+    paddingVertical: 5,
   },
 });
 export default DevicePage;
