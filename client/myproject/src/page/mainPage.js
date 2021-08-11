@@ -29,7 +29,7 @@ const MainPage = () => {
             {
               backgroundColor: showDevice ? '#e9e9e9' : 'white',
             },
-            styles.containerBtn,
+            styles.deviceBtn,
           ]}>
           <Text>Devices</Text>
         </TouchableOpacity>
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     flexDirection: 'row',
-    marginBottom: 20,
+    marginBottom: 10,
     borderWidth: 1,
     borderColor: '#e9e9e9',
   },
